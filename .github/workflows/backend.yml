@@ -6,6 +6,7 @@ on:
             - feature/build-api
             - develop
             - main
+            - feature/prometheus-grafana
         paths:
             - 'docker-compose.yml'
             - .github/workflows/backend.yml
