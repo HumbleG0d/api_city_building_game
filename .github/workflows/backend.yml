@@ -97,6 +97,11 @@ jobs:
             java-version: '17'
             distribution: 'temurin'
 
+        - name: Make mvnw executable
+          run: |
+           cd api 
+           chmod +x ./mvnw
+
         - name: Extract porject version
           id: extract_version
           run: |
