@@ -35,7 +35,7 @@ jobs:
             cd api
             ./mvnw clean compile
 
-# Add Dependency Check
+# Add Dependency Check 2
     depchecktest:
         runs-on: ubuntu-latest
         name: depecheck_test
