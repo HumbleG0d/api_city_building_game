@@ -22,7 +22,7 @@ jobs:
           uses: actions/setup-java@v4
           with:
             java-version: '17'
-            distribution: 'correctto'
+            distribution: 'temurin'
             cache: maven
 
         - name: Compile project
@@ -41,7 +41,7 @@ jobs:
           uses: actions/setup-java@v4
           with:
             java-version: '17'
-            distribution: 'correctto'
+            distribution: 'temurin'
 
         - name: Running unit Tests
           run: |
@@ -60,7 +60,7 @@ jobs:
           uses: actions/setup-java@v4
           with:
             java-version: '17'
-            distribution: 'correctto'
+            distribution: 'temurin'
             cache: maven
 
         - name: Build project
@@ -80,7 +80,7 @@ jobs:
           uses: actions/setup-java@v4
           with:
             java-version: '17'
-            distribution: 'correctto'
+            distribution: 'temurin'
 
         - name: Extract porject version
           id: extract_version
