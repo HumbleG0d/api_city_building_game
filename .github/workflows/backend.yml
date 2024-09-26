@@ -24,7 +24,10 @@ jobs:
             java-version: '17'
             distribution: 'temurin'
             cache: maven
-
+        
+        - name: Make mvnw executable
+          run: chmod +x ./mvnw
+          
         - name: Compile project
           run: |
             cd api
@@ -42,6 +45,9 @@ jobs:
           with:
             java-version: '17'
             distribution: 'temurin'
+
+        - name: Make mvnw executable
+          run: chmod +x ./mvnw
 
         - name: Running unit Tests
           run: |
@@ -63,6 +69,9 @@ jobs:
             distribution: 'temurin'
             cache: maven
 
+        - name: Make mvnw executable
+          run: chmod +x ./mvnw
+          
         - name: Build project
           run: |
             cd api
