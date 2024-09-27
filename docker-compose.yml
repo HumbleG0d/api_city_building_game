@@ -11,7 +11,7 @@ services:
     networks:
       - spring-boot-net
   
-  city_building_game:
+  citybuildinggame:
     container_name: city_game
     image: city_game
     ports:
@@ -29,7 +29,9 @@ services:
     ports:
       - "9090:9090"
     volumes:
-      - ./prometheus.yml:/etc/prometheus/prometheus.yml"
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+    depends_on:
+      - citybuildinggame
   #Add grafana
   grafana:
     image: "grafana/grafana-enterprise"
@@ -38,6 +40,8 @@ services:
       - spring-boot-net
     ports:
       - "3000:3000"
+    links:
+      - prometheus:prometheus
 volumes:
   postgres:
 
