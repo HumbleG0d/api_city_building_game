@@ -7,7 +7,7 @@ import com.buil.api.model.resource.Resource;
 import com.buil.api.model.resource.Type_resource;
 
 public interface IResourceService {
-    void addResourceByFarm(Resource resource , String name , Type_resource type_resource , int hability);
+    void addResourceByFarm(City city , String name , Type_resource type_resource , int hability);
     List<Resource> initialResources(City city);
     List<Resource> getResourcesByCity(Long cityId);
     int habilityResourcesByCity(Long cityId);
