@@ -21,10 +21,13 @@ public class ResourceService implements IResourceService {
     private final ResourceRepository resourceRepository;
 
     @Override
-    public void addResourceByFarm(Resource resource, String name, Type_resource type_resource, int hability) {
-        /*TODO: Este resource se actualiza a partir del farmeo , el farme nos dara TIERRA , AGUA , ENERGIA , PIEDRA(5 de cada uno). Implementar la logica de si se crea un chacra entonces se genera un nuevo resource*/
-        resource = new Resource(name , type_resource , hability , resource.getCity());
-        resourceRepository.save(resource);
+    public void addResourceByFarm(City city , String name, Type_resource type_resource, int hability) {
+        
+        city.getResources().stream().forEach(r -> {
+            if (r.getName().equals("Madera") || r.getName().equals("Tierra") || r.getName().equals("Piedra") || r.getName().equals("Energia") ) {
+                r.setTotal(r.getTotal() + hability);
+            }
+        });
     }
 
     @Override
