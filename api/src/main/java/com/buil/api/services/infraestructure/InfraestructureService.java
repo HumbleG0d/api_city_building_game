@@ -31,22 +31,21 @@ public class InfraestructureService implements IInfraestructureService {
 
     @Override
     public InfraestructureDTO addInfraestructure(AddInfreaestructureRequest addInfreaestructureRequest, Long cityId) {
-        /*TODO: Actualizar los recursos.*/
-        City ciudad = cityRepository.findById(cityId)
+        City city = cityRepository.findById(cityId)
                 .orElseThrow(() -> new CityNotFoundException("Ciudad no encontrada"));
 
         Infraestructure infraestructure = createInfraestructure(addInfreaestructureRequest);
 
-        infraestructure.setCity(ciudad);
+        infraestructure.setCity(city);
 
         infraestructure = infraestructureRepository.save(infraestructure);
 
-        ciudad.getInfraestructure().add(infraestructure);
+        city.getInfraestructure().add(infraestructure);
 
-        cityRepository.save(ciudad);
+        cityRepository.save(city);
 
         if (infraestructure.getTypeInfraestructure().equals(TypeInfraestructure.RANCH)) {
-            this.generateFarmResources();
+            this.generateFarmResources(city);
         }
 
         return convertToDTO(infraestructure);
@@ -66,7 +65,7 @@ public class InfraestructureService implements IInfraestructureService {
         );
       }
     
-      private void generateFarmResources(){
+      private void generateFarmResources(City city){
         List<Infraestructure> infraestructures = this.getInfrestrucutureByType(TypeInfraestructure.RANCH);
         infraestructures.forEach(infraestructure -> {
           int catidadProduccion = infraestructure.getAbility() + 5;
@@ -77,10 +76,10 @@ public class InfraestructureService implements IInfraestructureService {
             }
           resource.setTotal(resource.getTotal() + catidadProduccion);
             resourceRepository.save(resource);
-        resourceService.addResourceByFarm(resource , "Madera" , Type_resource.NATURAL , 5);
-          resourceService.addResourceByFarm(resource , "Piedra" , Type_resource.NATURAL , 5);
-          resourceService.addResourceByFarm(resource , "Tierra" , Type_resource.NATURAL , 5);
-          resourceService.addResourceByFarm(resource , "Energia" , Type_resource.ENERGY, 10);
+        resourceService.addResourceByFarm(city , "Madera" , Type_resource.NATURAL , 5);
+          resourceService.addResourceByFarm(city , "Piedra" , Type_resource.NATURAL , 5);
+          resourceService.addResourceByFarm(city , "Tierra" , Type_resource.NATURAL , 5);
+          resourceService.addResourceByFarm(city , "Energia" , Type_resource.ENERGY, 10);
         });
       }
 
