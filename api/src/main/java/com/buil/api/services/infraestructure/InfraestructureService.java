@@ -91,14 +91,13 @@ public class InfraestructureService implements IInfraestructureService {
     }
 
     @Override
-    public List<Infraestructure> getAllInfraestructures() {
-        return infraestructureRepository.findAll();
+    public List<InfraestructureDTO> getAllInfraestructures() {
+      return infraestructureRepository.findAll().stream().map(infra -> convertToDTO(infra)).toList();
     }
 
     @Override
-    public Infraestructure getInfraestructureByName(String name) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'getInfraestructurePorNombre'");
+    public List<InfraestructureDTO> getInfraestructureByName(String name) {
+        return infraestructureRepository.findByName(name).stream().map(infra -> convertToDTO(infra)).toList();
     }
 
     @Override
@@ -114,8 +113,9 @@ public class InfraestructureService implements IInfraestructureService {
 
     @Override
     public void deleteInfraestructure(Long id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'deleteInfraestructure'");
+      infraestructureRepository.findById(id).ifPresentOrElse(infraestructureRepository::delete, () -> {
+        throw new InfraestructureNotFoundException("Infraestructure not found");
+        });
     }
     
 }
