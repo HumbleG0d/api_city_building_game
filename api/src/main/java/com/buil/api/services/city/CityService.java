@@ -14,7 +14,7 @@ import com.buil.api.exceptions.CityNotFoundException;
 import com.buil.api.model.City;
 import com.buil.api.repository.CityRepository;
 import com.buil.api.request.AddCityRequest;
-import com.buil.api.request.UpdateCityRequest;
+import com.buil.api.request.UpdateCityByName;
 import com.buil.api.services.population.PopulationService;
 import com.buil.api.services.resources.ResourceService;
 
@@ -98,24 +98,24 @@ public class CityService implements ICityService {
     }
 
     @Override
-    public City getCityByName(String name) {
-        return cityRepository.findByName(name);
+    public CityDTO getCityByName(String name) {
+        return convertToCityDTO(cityRepository.findByName(name));
     }
 
     @Override
-    public List<City> getCityes() {
-        return cityRepository.findAll();
+    public List<CityDTO> getCityes() {
+        return cityRepository.findAll().stream().map(c -> convertToCityDTO(c)).toList();
     }
 
     @Override
-    public City updateCity(UpdateCityRequest city, Long id) {
-        return cityRepository.findById(id).map(existingCity -> updateExistingCity(existingCity , city)).map(cityRepository::save).orElseThrow(() -> new CityNotFoundException("Ciudad no encontrada"));
+    public CityDTO updateCity(UpdateCityByName updateCityByName, Long id) {
+        return convertToCityDTO(cityRepository.findById(id).map(existingCity ->  updateExistingCityName(existingCity, updateCityByName))
+                .map(cityRepository::save).orElseThrow(() -> new CityNotFoundException("Ciudad no encontrada")));
     }
     
-    private City updateExistingCity(City existingCity , UpdateCityRequest updateCity) {
-        existingCity.setName(updateCity.getName());
-        existingCity.setPopulation(updateCity.getPopulation());
-        existingCity.setResources(updateCity.getResources());
+    
+    private City updateExistingCityName(City existingCity , UpdateCityByName updateCityByName) {
+        existingCity.setName(updateCityByName.getName());
         return existingCity;
     }
 
