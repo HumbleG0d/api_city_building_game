@@ -10,7 +10,7 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 public class InfraestructureDTO {
-    private String nome;
+    private String name;
     private TypeInfraestructure typeInfraestructure;
     private Map<String, Integer> cost;
     private int constructionTime;
