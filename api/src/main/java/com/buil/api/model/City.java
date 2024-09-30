@@ -18,26 +18,62 @@ import com.buil.api.model.resource.Resource;
 @NoArgsConstructor
 @Setter
 @Getter
+/**
+ * Entity representing a city in the city-building game.
+ * A city is composed of resources, population, infrastructure, and a certain amount of currency (coins).
+ */
 public class City {
-  @Id
-  @GeneratedValue(strategy = GenerationType.AUTO)
-  private Long id;
-  private String name;
-  @OneToMany(mappedBy = "city")
-  private List<Resource> resources;
-  @OneToOne(mappedBy = "city", cascade = CascadeType.ALL)
-  private Population population;
 
-  private BigDecimal coins;
+    /**
+     * Unique identifier for the city, generated automatically.
+     */
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
 
-  @OneToMany(mappedBy = "city", cascade = CascadeType.ALL)
-  private List<Infraestructure> infraestructure;
+    /**
+     * The name of the city.
+     */
+    private String name;
 
+    /**
+     * List of resources associated with the city.
+     * One city can have multiple resources.
+     */
+    @OneToMany(mappedBy = "city")
+    private List<Resource> resources;
 
-  public City(String name , List<Resource> resources , Population population) {
-    this.name = name;
-    this.resources = resources;
-    this.population = population;
-    coins = new BigDecimal(1000);
-  }
+    /**
+     * The population of the city. There is a one-to-one relationship between a city and its population.
+     */
+    @OneToOne(mappedBy = "city", cascade = CascadeType.ALL)
+    private Population population;
+
+    /**
+     * The amount of coins a city has. This is the currency used for managing the city’s operations and growth.
+     * Default value is set to 1000 coins.
+     */
+    private BigDecimal coins;
+
+    /**
+     * List of infrastructure objects in the city.
+     * One city can have multiple infrastructures, such as buildings, ranches, and factories.
+     */
+    @OneToMany(mappedBy = "city", cascade = CascadeType.ALL)
+    private List<Infraestructure> infraestructure;
+
+    /**
+     * Constructor to create a city with a name, resources, and population.
+     * Coins are initialized with a default value of 1000.
+     *
+     * @param name the name of the city
+     * @param resources list of resources associated with the city
+     * @param population the population associated with the city
+     */
+    public City(String name, List<Resource> resources, Population population) {
+        this.name = name;
+        this.resources = resources;
+        this.population = population;
+        this.coins = new BigDecimal(1000);
+    }
 }
