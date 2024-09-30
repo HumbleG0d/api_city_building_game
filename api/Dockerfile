@@ -1,33 +1,34 @@
-# Build stage
 FROM maven:3.8.7-openjdk-18 AS build
 WORKDIR /build
-COPY pom.xml .  
+COPY pom.xml .
 
-# Download dependencies without running tests
+# Descargar dependencias
 RUN mvn dependency:go-offline
 
-COPY src ./src  
+# Copiar el código fuente
+COPY src ./src
 
-# Build the application, skipping tests for faster builds
+# Compilar y empaquetar la aplicación
 RUN mvn clean package -DskipTests
 
-# Production stage
+# Runtime stage
 FROM amazoncorretto:17
-ARG PROFILE=dev  # Default profile is 'dev'
-ARG APP_VERSION=0.0.1-SNAPSHOT  # Default application version
+ARG PROFILE=dev
+ARG APP_VERSION=0.0.1-SNAPSHOT
 
-WORKDIR /app  # Set working directory for the production image
+# Establecer el directorio de trabajo para la aplicación
+WORKDIR /app
 
-# Copy the built jar file from the build stage
+# Copiar el JAR generado de la etapa de construcción
 COPY --from=build /build/target/api-*.jar /app/city_game.jar
 
-# Expose port 8081 for the application
+# Exponer el puerto en el que la aplicación escuchará
 EXPOSE 8081
 
-# Set environment variables for database URL and application profile
+# Configurar variables de entorno
 ENV DB_URL=jdbc:postgresql://postgres-sql:5432/city_game_db
 ENV ACTIVE_PROFILE=${PROFILE}
 ENV JAR_VERSION=${APP_VERSION}
 
-# Command to run the application with debugging enabled
+# Comando para ejecutar la aplicación
 CMD java -jar -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=*:5005 -Dspring.profiles.active=${ACTIVE_PROFILE} -Dspring.datasource.url=${DB_URL} city_game.jar
