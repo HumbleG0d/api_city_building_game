@@ -17,5 +17,4 @@ public class ResourceDTO {
     // Total amount of the resource available
     private int total;
 
-    // Getters and setters omitted for brevity
 }

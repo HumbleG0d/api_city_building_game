@@ -34,5 +34,4 @@ public class CityDTO {
     // List of infrastructures present in the city
     private List<InfraestructureDTO> infraestructures;
 
-    // Getters and setters omitted for brevity
 }

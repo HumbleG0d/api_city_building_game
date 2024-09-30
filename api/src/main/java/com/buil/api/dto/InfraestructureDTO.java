@@ -30,5 +30,4 @@ public class InfraestructureDTO {
     // Capacity of the infrastructure, representing the number of people or amount of resources it can handle
     private int capacity;
 
-    // Getters and setters omitted for brevity
 }
