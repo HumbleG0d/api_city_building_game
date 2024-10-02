@@ -255,7 +255,7 @@ Para empezar a utilizar la API, aquí hay algunas rutas disponibles:
     - Escribe una consulta para mostrar una métrica (por ejemplo, `http_requests_total`).
     - Guarda el panel y agrégalo a un dashboard.
 
-    ![](https://github.com/HumbleG0d/api_city_building_game/blob/main/api/assets/grafana_request.png)
+    ![](https://github.com/HumbleG0d/api_city_building_game/blob/main/api/assets/grafana_http.png)
 
 
     ![](https://github.com/HumbleG0d/api_city_building_game/blob/main/api/assets/grafana_statics.png)
