@@ -1,4 +1,4 @@
-# api_city_building_game
+# City-Building Game API
 
 Este es el backend de un juego de construcción de ciudades, desarrollado en Java utilizando Spring Boot. La API permite la gestión de recursos, infraestructuras, ciudades y poblaciones dentro del juego.
 
@@ -90,7 +90,7 @@ Para empezar a utilizar la API, aquí hay algunas rutas disponibles:
 }
 ```
 
- ![](https://github.com/HumbleG0d/api_city_building_game/blob/api/assets/post_city.png)
+ ![](https://github.com/HumbleG0d/api_city_building_game/blob/main/api/assets/post_city.png)
 
 
 ### 2. Mostrar Ciudad por id
@@ -141,7 +141,7 @@ Para empezar a utilizar la API, aquí hay algunas rutas disponibles:
 }
 ```
 
- ![](https://github.com/HumbleG0d/api_city_building_game/blob/api/assets/get_city.png)
+ ![](https://github.com/HumbleG0d/api_city_building_game/blob/main/api/assets/get_city.png)
 
 
 ### 2. Crear una Infraestrucutura
@@ -169,7 +169,7 @@ Para empezar a utilizar la API, aquí hay algunas rutas disponibles:
 }
 ```
 
- ![](https://github.com/HumbleG0d/api_city_building_game/blob/api/assets/post_infra.png)
+ ![](https://github.com/HumbleG0d/api_city_building_game/blob/main/api/assets/post_infra.png)
 
 
 
@@ -196,7 +196,7 @@ Para empezar a utilizar la API, aquí hay algunas rutas disponibles:
 }
 ```
 
- ![](https://github.com/HumbleG0d/api_city_building_game/blob/api/assets/post_infra.png)
+ ![](https://github.com/HumbleG0d/api_city_building_game/blob/main/api/assets/post_infra.png)
 
 
 ## Monitoreo con Prometheus y Grafana
@@ -209,7 +209,7 @@ Para empezar a utilizar la API, aquí hay algunas rutas disponibles:
     http://localhost:9090
     ```
 
-    ![](https://github.com/HumbleG0d/api_city_building_game/blob/api/assets/prometheus.png)
+    ![](https://github.com/HumbleG0d/api_city_building_game/blob/main/api/assets/prometheus.png)
 
 
 2. En la interfaz de Prometheus, puedes hacer consultas sobre las métricas recolectadas. Por ejemplo:
@@ -217,7 +217,7 @@ Para empezar a utilizar la API, aquí hay algunas rutas disponibles:
    - Métricas sobre el uso de CPU: `process_cpu_seconds_total`
    - Métricas sobre el estado de tus endpoints: `http_requests_total`
 
-    ![](https://github.com/HumbleG0d/api_city_building_game/blob/api/assets/prometheus_up.png)
+    ![](https://github.com/HumbleG0d/api_city_building_game/blob/main/api/assets/prometheus_up.png)
 
 3. También puedes ver el estado de las series de tiempo, targets y alertas.
 
@@ -235,7 +235,7 @@ Para empezar a utilizar la API, aquí hay algunas rutas disponibles:
 
    Se te pedirá cambiar la contraseña la primera vez que inicies sesión.
 
-   ![](https://github.com/HumbleG0d/api_city_building_game/blob/api/assets/grafana.png)
+   ![](https://github.com/HumbleG0d/api_city_building_game/blob/main/api/assets/grafana.png)
 
 3. Una vez dentro de Grafana:
     - Ve a la sección de **Configuration** y selecciona **Data Sources**.
@@ -246,7 +246,7 @@ Para empezar a utilizar la API, aquí hay algunas rutas disponibles:
       ```
 
 
-    ![](https://github.com/HumbleG0d/api_city_building_game/blob/api/assets/grafana_add_p.png)
+    ![](https://github.com/HumbleG0d/api_city_building_game/blob/main/api/assets/grafana_add_p.png)
 
 
 4. Crea un dashboard para visualizar las métricas:
@@ -255,7 +255,7 @@ Para empezar a utilizar la API, aquí hay algunas rutas disponibles:
     - Escribe una consulta para mostrar una métrica (por ejemplo, `http_requests_total`).
     - Guarda el panel y agrégalo a un dashboard.
 
-    ![](https://github.com/HumbleG0d/api_city_building_game/blob/api/assets/grafana_request.png)
+    ![](https://github.com/HumbleG0d/api_city_building_game/blob/main/api/assets/grafana_request.png)
 
 
-    ![](https://github.com/HumbleG0d/api_city_building_game/blob/api/assets/grafana_statics.png)
+    ![](https://github.com/HumbleG0d/api_city_building_game/blob/main/api/assets/grafana_statics.png)
