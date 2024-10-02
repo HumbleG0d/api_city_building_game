@@ -1,5 +1,9 @@
 package com.buil.api.model.infraestructure;
 
+/**
+ * Enum representing the different types of infrastructure available in the city-building game.
+ * Infrastructures are key components for resource management and city growth.
+ */
 public enum TypeInfraestructure {
     RANCH,
     BUILDING,
