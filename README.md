@@ -261,3 +261,7 @@ Para empezar a utilizar la API, aquí hay algunas rutas disponibles:
     ![](https://github.com/HumbleG0d/api_city_building_game/blob/main/api/assets/grafana_statics.png)
 
 ### Usando Jenkis
+
+1. 
+
+2. 
